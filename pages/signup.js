@@ -1,14 +1,9 @@
 import Layout from '../components/Layout';
-import Link from 'next/link';
+import SignupComponent from '../components/Auth/Signup';
 
 const Signup = () => (
   <Layout>
-    <div className='container'>
-      <h1>Signup</h1>
-      <Link href='/'>
-        <a>Home</a>
-      </Link>
-    </div>
+    <SignupComponent />
   </Layout>
 );
 

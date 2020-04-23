@@ -1,9 +1,7 @@
 import Layout from '../components/Layout';
 const Signin = () => (
   <Layout>
-    <div className='container'>
-      <h1>Signin</h1>
-    </div>
+    <h1>Signin</h1>
   </Layout>
 );
 

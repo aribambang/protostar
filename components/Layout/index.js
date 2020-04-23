@@ -3,7 +3,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className='container mt-3'>{children}</main>
       <p>footer</p>
     </>
   );
