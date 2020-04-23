@@ -1,10 +1,11 @@
+import Header from '../Header';
 const Layout = ({ children }) => {
   return (
-    <div>
-      <p>Header</p>
+    <>
+      <Header />
       <main>{children}</main>
       <p>footer</p>
-    </div>
+    </>
   );
 };
 
