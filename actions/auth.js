@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'js-cookie';
 import { API } from '../config';
 
 export const signup = (user) => {
@@ -7,4 +8,47 @@ export const signup = (user) => {
 
 export const signin = (user) => {
   return axios.post(`${API}/signin`, user);
+};
+
+export const setCookie = (key, value) => {
+  if (process.browser) {
+    cookie.set(key, value, { expires: 1 });
+  }
+};
+
+export const getCookie = (key) => {
+  if (process.browser) {
+    return cookie.get(key);
+  }
+};
+
+export const removeCookie = (key) => {
+  if (process.browser) {
+    cookie.remove(key, { expires: 1 });
+  }
+};
+
+export const setLocalStorage = (key, value) => {
+  if (process.browser) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+};
+
+export const authenticate = (data, next) => {
+  setCookie('token', data.token);
+  setLocalStorage('user', data.user);
+  next();
+};
+
+export const isAuth = () => {
+  if (process.browser) {
+    const cookieChecked = getCookie('token');
+    if (cookieChecked) {
+      const user = localStorage.getItem('user');
+      if (user) {
+        return JSON.parse(user);
+      }
+    }
+    return false;
+  }
 };

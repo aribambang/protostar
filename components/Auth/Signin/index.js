@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signin } from '../../../actions/auth';
+import { signin, authenticate } from '../../../actions/auth';
 import Router from 'next/router';
 
 const Signin = () => {
@@ -26,12 +26,21 @@ const Signin = () => {
     try {
       const { data } = await signin(user);
 
-      Router.push(`/`);
+      authenticate(data, () => {
+        Router.push(`/`);
+      });
     } catch (err) {
-      const error = err.response.data.error;
+      if (err.response) {
+        const error = err.response.data.error;
+        setValues({
+          ...values,
+          error: error,
+        });
+      }
+    } finally {
       setValues({
         ...values,
-        error: error,
+        loading: false,
       });
     }
   };
