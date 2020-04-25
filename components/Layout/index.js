@@ -4,7 +4,6 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <main className='container mt-3'>{children}</main>
-      <p>footer</p>
     </>
   );
 };

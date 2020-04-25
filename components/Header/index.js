@@ -21,19 +21,21 @@ const Header = (props) => {
     <div>
       <Navbar color='light' light expand='md'>
         <Link href='/'>
-          <NavLink className='font-weight-bold'>{APP_NAME}</NavLink>
+          <NavLink className='font-weight-bold' style={{ cursor: 'pointer' }}>
+            {APP_NAME}
+          </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='ml-auto' navbar>
             <NavItem>
               <Link href='/signin'>
-                <NavLink>Signin</NavLink>
+                <NavLink style={{ cursor: 'pointer' }}>Signin</NavLink>
               </Link>
             </NavItem>
             <NavItem>
               <Link href='/signup'>
-                <NavLink>Signup</NavLink>
+                <NavLink style={{ cursor: 'pointer' }}>Signup</NavLink>
               </Link>
             </NavItem>
           </Nav>
