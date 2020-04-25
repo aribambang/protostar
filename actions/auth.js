@@ -10,6 +10,17 @@ export const signin = (user) => {
   return axios.post(`${API}/signin`, user);
 };
 
+export const signout = (next) => {
+  removeCookie('token');
+  removeLocalStorage('user');
+  next();
+
+  return axios
+    .get(`${API}/signup`)
+    .then((response) => console.log('signout success'))
+    .catch((err) => console.log(err));
+};
+
 export const setCookie = (key, value) => {
   if (process.browser) {
     cookie.set(key, value, { expires: 1 });
@@ -31,6 +42,12 @@ export const removeCookie = (key) => {
 export const setLocalStorage = (key, value) => {
   if (process.browser) {
     localStorage.setItem(key, JSON.stringify(value));
+  }
+};
+
+export const removeLocalStorage = (key) => {
+  if (process.browser) {
+    localStorage.removeItem(key);
   }
 };
 
