@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { signup } from '../../../actions/auth';
+import { useState, useEffect } from 'react';
+import Router from 'next/router';
+import { signup, isAuth } from '../../../actions/auth';
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -11,6 +12,10 @@ const Signup = () => {
     message: '',
     showForm: true,
   });
+
+  useEffect(() => {
+    isAuth() && Router.push('/');
+  }, []);
 
   const onSubmit = async (evt) => {
     evt.preventDefault();
