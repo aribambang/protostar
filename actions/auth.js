@@ -16,7 +16,7 @@ export const signout = (next) => {
   next();
 
   return axios
-    .get(`${API}/signup`)
+    .get(`${API}/signout`)
     .then((response) => console.log('signout success'))
     .catch((err) => console.log(err));
 };

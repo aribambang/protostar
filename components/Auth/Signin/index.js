@@ -31,7 +31,12 @@ const Signin = () => {
       const { data } = await signin(user);
 
       authenticate(data, () => {
-        Router.push(`/`);
+        const authenticateUser = isAuth();
+        if (authenticateUser && authenticateUser.role == 1) {
+          Router.push(`/admin`);
+        } else {
+          Router.push(`/user`);
+        }
       });
     } catch (err) {
       if (err.response) {
