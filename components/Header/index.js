@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { APP_NAME } from '../../config';
@@ -16,8 +16,13 @@ import {
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    setAuthenticated(isAuth());
+  }, []);
 
   return (
     <div>
@@ -30,7 +35,7 @@ const Header = (props) => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='ml-auto' navbar>
-            {!isAuth() && (
+            {!authenticated && (
               <>
                 <NavItem>
                   <Link href='/signin'>
@@ -44,7 +49,7 @@ const Header = (props) => {
                 </NavItem>
               </>
             )}
-            {isAuth() && (
+            {authenticated && (
               <>
                 <NavItem>
                   <Link href={isAuth().role == 0 ? '/user' : '/admin'}>
