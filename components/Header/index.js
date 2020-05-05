@@ -15,6 +15,8 @@ import {
   NavbarText,
 } from 'reactstrap';
 
+import '../.././node_modules/nprogress/nprogress.css';
+
 NProgress.configure({ showSpinner: false });
 Router.onRouteChangeStart = (url) => NProgress.start();
 Router.onRouteChangeComplete = (url) => NProgress.done();
