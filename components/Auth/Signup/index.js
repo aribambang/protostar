@@ -28,24 +28,22 @@ const Signup = () => {
 
     const user = { name, email, password };
 
-    try {
-      const { data } = await signup(user);
-      setValues({
-        ...values,
-        name: '',
-        email: '',
-        error: false,
-        loading: false,
-        message: data.message,
-        showForm: false,
-      });
-    } catch (err) {
-      const error = err.response.data.error;
-      setValues({
-        ...values,
-        error: error,
-      });
-    }
+    signup(user).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error, loading: false });
+      } else {
+        setValues({
+          ...values,
+          name: '',
+          email: '',
+          password: '',
+          error: '',
+          loading: false,
+          message: data.message,
+          showForm: false,
+        });
+      }
+    });
   };
 
   const handleChange = (field) => (evt) => {
