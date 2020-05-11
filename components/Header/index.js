@@ -46,7 +46,7 @@ const Header = (props) => {
             <>
               <NavItem>
                 <Link href='/blogs'>
-                  <NavLink>Blogs</NavLink>
+                  <NavLink style={{ cursor: 'pointer' }}>Blogs</NavLink>
                 </Link>
               </NavItem>
             </>
