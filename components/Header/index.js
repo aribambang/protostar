@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 
 import '../.././node_modules/nprogress/nprogress.css';
+import Search from '../Blog/Search';
 
 NProgress.configure({ showSpinner: false });
 Router.onRouteChangeStart = (url) => NProgress.start();
@@ -86,6 +87,7 @@ const Header = (props) => {
           </Nav>
         </Collapse>
       </Navbar>
+      <Search />
     </div>
   );
 };
