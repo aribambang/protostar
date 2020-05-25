@@ -53,14 +53,23 @@ const UserProfile = ({ user, blogs, query }) => {
             <div className='col-md-12'>
               <div className='card'>
                 <div className='card-body'>
-                  <h5>{user.name}</h5>
-                  <Link href={`${user.profile}`}>
-                    <a>View Profile</a>
-                  </Link>
-                  <p className='text-muted'>
-                    Joined {moment(user.createdAt).fromNow()} |{' '}
-                    {moment(user.createdAt).format('DD MMMM YYYY')}
-                  </p>
+                  <div className='row'>
+                    <div className='col-md-8'>
+                      <h5>{user.name}</h5>
+                      <p className='text-muted'>
+                        Joined {moment(user.createdAt).fromNow()} |{' '}
+                        {moment(user.createdAt).format('DD MMMM YYYY')}
+                      </p>
+                    </div>
+                    <div className='col-md-4'>
+                      <img
+                        src={user.photo}
+                        className='img img-fluid img-thumbnail mb-3'
+                        style={{ maxHeight: '100px', maxWidth: '100%' }}
+                        alt='user profile'
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
