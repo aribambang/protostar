@@ -1,18 +1,32 @@
 import Layout from '../components/Layout';
+import { withRouter } from 'next/router';
 import SigninComponent from '../components/Auth/Signin';
 
-const Signin = () => {
+const Signin = ({ router }) => {
+  const showRedirectMessage = () => {
+    if (router.query.message) {
+      return <div className='alert alert-danger'>{router.query.message}</div>;
+    } else {
+      return;
+    }
+  };
+
   return (
     <Layout>
-      <div className='row justify-content-center'>
-        <div className='col-12 text-center'>
-          <h2>Signin page</h2>
+      <div className='container-fluid'>
+        <h2 className='text-center pt-4 pb-4'>Signin</h2>
+
+        <div className='row'>
+          <div className='col-md-6 offset-md-3'>{showRedirectMessage()}</div>
         </div>
-        <div className='col-12 col-md-6'>
-          <SigninComponent />
+
+        <div className='row'>
+          <div className='col-md-6 offset-md-3'>
+            <SigninComponent />
+          </div>
         </div>
       </div>
     </Layout>
   );
 };
-export default Signin;
+export default withRouter(Signin);
